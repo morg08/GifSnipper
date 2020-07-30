@@ -21,15 +21,19 @@ namespace GifSnipper
         private bool _isDraggingSelection = false;
         private Point _startingPoint;
         private bool _isCapturing = false;
-        private readonly string BASE_PATH;
         private Recorder _recorder;
+        private readonly string PICTURES_FOLDER_PATH;
+        private readonly string BASE_PATH;
 
         [DllImport("user32.dll")]
         public static extern bool SetProcessDPIAware();
 
         public MainWindow()
         {
+            PICTURES_FOLDER_PATH = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "gifsnipper");
             BASE_PATH = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\gifsnipper\\";
+
+            if (!Directory.Exists(PICTURES_FOLDER_PATH)) Directory.CreateDirectory(PICTURES_FOLDER_PATH);
             if (!Directory.Exists(BASE_PATH)) Directory.CreateDirectory(BASE_PATH);
 
             SetProcessDPIAware();
@@ -133,9 +137,9 @@ namespace GifSnipper
             _recorder.StopRecording();
 
             var aviFilePath = _recorder.Filepath;
-            var gifFilePath = BASE_PATH + "GifSnipper " + DateTime.Now.ToString("yyyy-MM-dd HHmmss") + ".gif";
-
+            var gifFilePath = Path.Combine(PICTURES_FOLDER_PATH, "GifSnipper " + DateTime.Now.ToString("yyyy-MM-dd HHmmss") + ".gif");
             var ffmpegPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ffmpeg.exe");
+
             var ffmpegProcess = Process.Start(new ProcessStartInfo
             {
                 FileName = ffmpegPath,
