@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="GifSnipper" Language="1033" Version="1.0.0.0" Manufacturer="morg08" UpgradeCode="f08f7b34-2d3f-42ca-b83b-233121f20d0d">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes" />
+    <Icon Id="icon.ico" SourceFile="$(var.GifSnipper.TargetDir)\gifsnipper.ico"/>
+
+    <Property Id="ARPPRODUCTICON">icon.ico</Property>
+    <Property Id="ARPURLINFOABOUT">http://github.com/morg08/GifSnipper</Property>
+    
+		<Feature Id="ProductFeature" Title="GifSnipper" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+
+    <UIRef Id="WixUI_InstallDir" />
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+	</Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="GifSnipper" />
+      </Directory>
+
+      <Directory Id="ProgramMenuFolder" Name="Programs">
+        <Directory Id="ApplicationProgramsFolder" Name="GifSnipper"/>
+      </Directory>
+    </Directory>
+  </Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<Component Id="ProductComponent" Guid="80a61ca4-67ad-49a6-b15f-e922ba4f46a5">
+        <File Id="GifSnipperExe" Source="$(var.GifSnipper.TargetDir)\GifSnipper.exe">
+          <Shortcut Id="GifSnipperShortcut"
+            Directory="ApplicationProgramsFolder"
+            Name="GifSnipper"
+            WorkingDirectory="INSTALLFOLDER"
+            Advertise="yes"
+            Icon="icon.ico"
+          ></Shortcut>
+        </File>
+        <RemoveFolder Id="RemoveStartMenuShortcut" Directory="ApplicationProgramsFolder" On="uninstall" />
+
+        <File Source="$(var.GifSnipper.TargetDir)\GifSnipper.exe.config"></File>
+        <File Source="$(var.GifSnipper.TargetDir)\GifSnipper.pdb"></File>
+        <File Source="$(var.GifSnipper.TargetDir)\ffmpeg.exe"></File>
+        <File Source="$(var.GifSnipper.TargetDir)\gifsnipper.ico"></File>
+        <File Source="$(var.GifSnipper.TargetDir)\SharpAvi.dll"></File>
+        <File Source="$(var.GifSnipper.TargetDir)\SharpAvi.xml"></File>
+        <File Source="$(var.GifSnipper.TargetDir)\System.Drawing.Common.dll"></File>
+        <File Source="$(var.GifSnipper.TargetDir)\Windows.winmd"></File>
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>

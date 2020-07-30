@@ -1,0 +1,41 @@
+﻿<Window x:Class="GifSnipper.MainWindow"
+        x:Name="window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GifSnipper"
+        mc:Ignorable="d"
+        Title="Gif Snipper"
+        WindowStyle="None"
+        WindowState="Maximized"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Cursor="Cross"
+        ResizeMode="NoResize"  
+        Topmost="True"
+        Loaded="Window_Loaded"
+        MouseDown="Window_MouseDown"
+        MouseMove="Window_MouseMove"
+        MouseUp="Window_MouseUp"
+        ShowInTaskbar="False"
+        >
+    <Grid>
+        <Canvas>
+            <Path x:Name="path" Stroke="White" Fill="Black" Opacity=".8" Stretch="Uniform">
+                <Path.Data>
+                    <CombinedGeometry GeometryCombineMode="Exclude">
+                        <CombinedGeometry.Geometry1>
+                            <RectangleGeometry x:Name="mainOverlay">
+                            </RectangleGeometry>
+                        </CombinedGeometry.Geometry1>
+                        <CombinedGeometry.Geometry2>
+                            <RectangleGeometry x:Name="dragSelection" >
+                            </RectangleGeometry>
+                        </CombinedGeometry.Geometry2>
+                    </CombinedGeometry>
+                </Path.Data>
+            </Path>
+        </Canvas>
+    </Grid>
+</Window>
