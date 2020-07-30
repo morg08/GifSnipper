@@ -31,7 +31,7 @@ namespace GifSnipper
         public MainWindow()
         {
             PICTURES_FOLDER_PATH = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "gifsnipper");
-            BASE_PATH = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\gifsnipper\\";
+            BASE_PATH = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "\\gifsnipper\\");
 
             if (!Directory.Exists(PICTURES_FOLDER_PATH)) Directory.CreateDirectory(PICTURES_FOLDER_PATH);
             if (!Directory.Exists(BASE_PATH)) Directory.CreateDirectory(BASE_PATH);
@@ -87,7 +87,7 @@ namespace GifSnipper
 
                     var recorderParams = new RecorderParams
                     {
-                        Filename = BASE_PATH + Guid.NewGuid().ToString() + ".avi",
+                        Filename = Path.Combine(BASE_PATH, Guid.NewGuid().ToString() + ".avi"),
                         FrameRate = 8,
                         Encoder = SharpAvi.KnownFourCCs.Codecs.MotionJpeg,
                         Quality = 100,
