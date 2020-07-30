@@ -29,8 +29,10 @@ namespace GifSnipper
 
         public MainWindow()
         {
-            SetProcessDPIAware();
             BASE_PATH = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\gifsnipper\\";
+            if (!Directory.Exists(BASE_PATH)) Directory.CreateDirectory(BASE_PATH);
+
+            SetProcessDPIAware();
             InitializeComponent();
         }
 
