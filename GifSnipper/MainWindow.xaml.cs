@@ -31,7 +31,7 @@ namespace GifSnipper
         public MainWindow()
         {
             PICTURES_FOLDER_PATH = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "gifsnipper");
-            BASE_PATH = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "\\gifsnipper\\");
+            BASE_PATH = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "gifsnipper");
 
             if (!Directory.Exists(PICTURES_FOLDER_PATH)) Directory.CreateDirectory(PICTURES_FOLDER_PATH);
             if (!Directory.Exists(BASE_PATH)) Directory.CreateDirectory(BASE_PATH);
