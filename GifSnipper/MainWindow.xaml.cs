@@ -53,6 +53,8 @@ namespace GifSnipper
                 if (!_isDraggingSelection && !_isCapturing)
                 {
                     _isLeftMouseHeldDown = true;
+                    window.instructionsPrompt.Visibility = Visibility.Hidden;
+                    window.exitPrompt.Visibility = Visibility.Hidden;
                     _startingPoint = e.GetPosition(this);
                     CaptureMouse();
                 }

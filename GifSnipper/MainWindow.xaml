@@ -21,7 +21,15 @@
         ShowInTaskbar="False"
         >
     <Grid>
-        <Canvas>
+        <StackPanel Panel.ZIndex="2" x:Name="exitPrompt">
+            <TextBlock Foreground="#E0E0E0" Background="Transparent" Margin="10" TextAlignment="Center" FontSize="18">Press ESC to exit</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Panel.ZIndex="2" x:Name="instructionsPrompt" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Foreground="#E0E0E0" Background="Transparent" FontSize="22">1. Drag the selection of the screen you want to record.</TextBlock>
+            <TextBlock Foreground="#E0E0E0" Background="Transparent" FontSize="22">2. Click outside of the selection to end the recording.</TextBlock>
+            <TextBlock Foreground="#E0E0E0" Background="Transparent" FontSize="22">3. Find the GIF in your Pictures folder.</TextBlock>
+        </StackPanel>
+        <Canvas Panel.ZIndex="1">
             <Path x:Name="path" Stroke="White" Fill="Black" Opacity=".8" Stretch="Uniform">
                 <Path.Data>
                     <CombinedGeometry GeometryCombineMode="Exclude">
