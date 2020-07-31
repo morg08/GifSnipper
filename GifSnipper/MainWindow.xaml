@@ -26,7 +26,9 @@
         </StackPanel>
         <StackPanel Orientation="Vertical" Panel.ZIndex="2" x:Name="instructionsPrompt" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Foreground="#E0E0E0" Background="Transparent" FontSize="22">1. Drag the selection of the screen you want to record.</TextBlock>
+            <Separator Opacity="0" Height="10"/>
             <TextBlock Foreground="#E0E0E0" Background="Transparent" FontSize="22">2. Click outside of the selection to end the recording.</TextBlock>
+            <Separator Opacity="0" Height="10"/>
             <TextBlock Foreground="#E0E0E0" Background="Transparent" FontSize="22">3. Find the GIF in your Pictures folder.</TextBlock>
         </StackPanel>
         <Canvas Panel.ZIndex="1">
